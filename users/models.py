@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class User(AbstractUser):
 
-    """ Custom user model """
+    """ Custom User Model """
 
     GENDER_MALE = "male"
     GENDER_FEMALE = "female"
@@ -35,7 +35,7 @@ class User(AbstractUser):
     language = models.CharField(
         choices=LANGUAGE_CHOICES, max_length=2, null=True, blank=True
     )
-    currrency = models.CharField(
+    currency = models.CharField(
         choices=CURRENCY_CHOICES, max_length=3, null=True, blank=True
     )
     superhost = models.BooleanField(default=False)
