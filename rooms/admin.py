@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from django.utils.html import mark_safe
 
 
 @admin.register(models.RoomType, models.Facility, models.Amenity, models.HouseRule)
@@ -18,7 +19,14 @@ class ItemAdmin(admin.ModelAdmin):
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
 
-    pass
+    """ Photo Admin Definition """
+
+    list_display = ("__str__", "get_thumbnail")
+
+    def get_thumbnail(self, obj):
+        return mark_safe(f'<img width="50px" src="{obj.file.url}" />')
+
+    get_thumbnail.short_description = "Thumbnail"
 
 
 @admin.register(models.Room)
